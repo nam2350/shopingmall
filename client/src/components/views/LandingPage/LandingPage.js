@@ -40,7 +40,7 @@ function LandingPage() {
                     console.log('모든 상품정보', response.data)
 
                     if (body.loadMore) {
-                        setProducts([...Products, response.data.productInfo])
+                        setProducts([...Products, ...response.data.productInfo])
                     } else {
                         setProducts(response.data.productInfo)
                     }
@@ -55,7 +55,7 @@ function LandingPage() {
 
         // console.log('상품정보', product)
         return <Col lg={6} md={8} xs={24} key={index}>
-            <Card cover={<ImageSlider images={product.images} />}>
+            <Card cover={<a href={`/product/${product._id}`}><ImageSlider images={product.images} /></a>}>
                 <Meta
                     title={product.title}
                     description={`$${product.price}`}
